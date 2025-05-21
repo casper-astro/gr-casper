@@ -1,0 +1,125 @@
+id: swreg
+label: swreg
+category: '[CASPER]'
+
+templates:
+  imports: from gnuradio import casper
+  make: casper.swreg()
+
+#  Make one 'parameters' list entry for every parameter you want settable from the GUI.
+#     Keys include:
+#     * id (makes the value accessible as keyname, e.g. in the make entry)
+#     * label (label shown in the GUI)
+#     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
+#     * default
+parameters:
+
+- id: tag
+  label: block tag
+  dtype: enum
+  options: ['xps']
+  option_labels: [xps]
+
+- id: io_dir
+  label: I/O direction
+  dtype: enum
+  options: ['From Processor','To Processor']
+  option_labels: ['From Processor','To Processor']
+  default: 'From Processor'
+
+- id: io_dir
+  label: I/O direction
+  dtype: enum
+  options: ['From Processor','To Processor']
+  option_labels: ['From Processor','To Processor']
+  default: 'From Processor'
+
+- id: io_delay
+  label: I/O delay
+  dtype: int
+  default: 0
+  hide: part
+
+- id: init_val
+  label: Initial Value
+  dtype: int
+  default: 0
+  hide: part
+
+- id: sample_period
+  label: Sample Period
+  dtype: int
+  default: 1
+  hide: part
+
+- id: names
+  label: Bitfield names [msb...lsb]
+  dtype: string
+  default: reg
+  hide: part
+
+- id: bitwidths
+  label: Bitfield widths
+  dtype: int
+  default: 32
+
+- id: bin_pts
+  label: Bitfield binary pts
+  dtype: int
+  default: 0
+  hide: part
+
+- id: arith_types
+  label: Bitfield types, ufix=0, fix=1, bool=2
+  dtype: int
+  default: 0
+  hide: part
+
+- id: sim_port
+  label: sim port
+  dtype: enum
+  options: ['on','off']
+  option_labels: ['on','off']
+  default: 'on'
+  hide: part
+
+- id: show_format
+  label: show format
+  dtype: enum
+  options: ['on','off']
+  option_labels: ['on','off']
+  default: 'on'
+  hide: part
+
+
+#- id: ...
+#  label: ...
+#  dtype: ...
+
+#  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
+#  Keys include:
+#      * label (an identifier for the GUI)
+#      * domain (optional - stream or message. Default is stream)
+#      * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
+#      * vlen (optional - data stream vector length. Default is 1)
+#      * optional (optional - set to 1 for optional inputs. Default is 0)
+
+inputs:
+#- id: ${ 'user_data_in' if io_dir == 'From Processor' else 'sim_in'}
+- label: user_data_in
+  domain: stream
+  dtype: int
+  vlen: 1
+  optional: True 
+
+outputs:
+#- id: ${ 'user_data_out' if io_dir == 'To Processor' else 'sim_out'}
+- label: user_data_out
+  domain: stream
+  dtype: int
+  vlen: 1
+  optional: True 
+
+#  'file_format' specifies the version of the GRC yml format used in the file
+#  and should usually not be changed.
+file_format: 1

@@ -1,0 +1,87 @@
+id: xsg
+label: rfsoc4x2
+category: '[CASPER]'
+
+templates:
+  imports: from gnuradio import casper
+  make: casper.rfsoc4x2()
+
+#  Make one 'parameters' list entry for every parameter you want settable from the GUI.
+#     Keys include:
+#     * id (makes the value accessible as keyname, e.g. in the make entry)
+#     * label (label shown in the GUI)
+#     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
+#     * default
+parameters:
+
+- id: tag
+  label: block tag
+  dtype: enum
+  options: ['xps']
+  option_labels: [xps]
+
+- id: hw_sys
+  label: Hardware Platform
+  dtype: enum
+  options: ['rfsoc4x2:xczu48dr']
+  option_labels: ['rfsoc4x2:xczu48dr']
+  default: 'rfsoc4x2:xczu48dr'
+
+- id: clk_src
+  label: User IP Clock Source(MHz)
+  dtype: enum
+  options: ['adc_clk']
+  option_labels: ['adc_clk']
+  default: 'adc_clk'
+
+- id: clk_rate
+  label: User IP Clock Rate(MHz)
+  dtype: float
+  default: 245.76
+
+- id: pl_clk_rate
+  label: RFPLL PL Clock Rate
+  dtype: float
+  default: 122.88
+
+- id: sample_period
+  label: Sample Period
+  dtype: int
+  default: 1
+  hide: part
+
+- id: synthesis_tool
+  label: Synthesis Tool
+  dtype: enum
+  options: ['XST']
+  option_labels: ['XST']
+  default: 'XST'
+  hide: part
+#- id: ...
+#  label: ...
+#  dtype: ...
+
+#  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
+#  Keys include:
+#      * label (an identifier for the GUI)
+#      * domain (optional - stream or message. Default is stream)
+#      * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
+#      * vlen (optional - data stream vector length. Default is 1)
+#      * optional (optional - set to 1 for optional inputs. Default is 0)
+#inputs:
+#- label: ...
+#  domain: ...
+#  dtype: ...
+#  vlen: ...
+#  optional: ...
+
+#outputs:
+#- label: ...
+#  domain: ...
+#  dtype: ...
+#  vlen: ...
+#  optional: ...
+
+#  'file_format' specifies the version of the GRC yml format used in the file
+#  and should usually not be changed.
+file_format: 1
