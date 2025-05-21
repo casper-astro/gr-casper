@@ -46,20 +46,20 @@ parameters:
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
+- label: in0
+  domain: stream 
+  dtype: int
+  vlen: 1
+  optional: True
+
 - label: in1
   domain: stream 
   dtype: int
   vlen: 1
   optional: True
 
-- label: in2
-  domain: stream 
-  dtype: int
-  vlen: 1
-  optional: True
-
 outputs:
-- label: out
+- label: out0
   domain: stream 
   dtype: int
   vlen: 1
